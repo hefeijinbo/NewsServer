@@ -1,5 +1,5 @@
 module CHTTPParser {
-    umbrella "/Users/jinbo/Desktop/NewsServer/Packages/PerfectHTTPServer-2.0.4/Sources/CHTTPParser/include"
+    umbrella "/Users/jinbo/Desktop/Project/NewsServer/Packages/PerfectHTTPServer-2.0.4/Sources/CHTTPParser/include"
     link "CHTTPParser"
     export *
 }

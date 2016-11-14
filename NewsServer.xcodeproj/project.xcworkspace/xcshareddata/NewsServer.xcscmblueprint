@@ -5,26 +5,28 @@
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "DCD994A20FFF69E73D7DE28EB512BBF004934554" : 9223372036854775807,
-    "0B9B07A57A7603A158703662ACDD6F3ABAA339F4" : 9223372036854775807,
+    "615FD99B652E80AC2E813EEEE7964BA10A9886D5" : 9223372036854775807,
     "9197B75B1BC29921D6E3B1CCDC2B258350009F3A" : 9223372036854775807,
     "B123C9ACF68A2BF01173B652DA8ABD73F990D1DE" : 9223372036854775807,
     "E2306DAE0C98D148736A05084B6FAB44F03B4909" : 9223372036854775807,
+    "0B9B07A57A7603A158703662ACDD6F3ABAA339F4" : 9223372036854775807,
     "C4127C9B9C8FDF608B532AD72407863CE2797629" : 9223372036854775807,
     "1CA88B7CBF2C2BEC6EE16FB4F8B576DE15CDAB51" : 9223372036854775807,
-    "615FD99B652E80AC2E813EEEE7964BA10A9886D5" : 9223372036854775807,
+    "C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53" : 9223372036854775807,
     "6F1260245BD69EFA9A05D126763C86280510C6E1" : 9223372036854775807
   },
-  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A1434B38-7B18-4358-B433-028A6A1A7959",
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E988F35A-A36C-47E8-A552-8486DA802F06",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "DCD994A20FFF69E73D7DE28EB512BBF004934554" : "Project\/NewsServer\/Packages\/COpenSSL-2.0.1\/",
-    "0B9B07A57A7603A158703662ACDD6F3ABAA339F4" : "Project\/NewsServer\/",
+    "DCD994A20FFF69E73D7DE28EB512BBF004934554" : "NewsServer\/Packages\/COpenSSL-2.0.1\/",
+    "615FD99B652E80AC2E813EEEE7964BA10A9886D5" : "NewsServer\/Packages\/PerfectThread-2.0.2\/",
     "9197B75B1BC29921D6E3B1CCDC2B258350009F3A" : "NewsServer\/Packages\/PerfectHTTP-2.0.5\/",
-    "B123C9ACF68A2BF01173B652DA8ABD73F990D1DE" : "Project\/NewsServer\/Packages\/MySQL-2.0.1\/",
+    "B123C9ACF68A2BF01173B652DA8ABD73F990D1DE" : "NewsServer\/Packages\/MySQL-2.0.1\/",
     "E2306DAE0C98D148736A05084B6FAB44F03B4909" : "NewsServer\/Packages\/PerfectLib-2.0.1\/",
+    "0B9B07A57A7603A158703662ACDD6F3ABAA339F4" : "Project\/NewsServer\/",
     "C4127C9B9C8FDF608B532AD72407863CE2797629" : "NewsServer\/Packages\/PerfectHTTPServer-2.0.4\/",
     "1CA88B7CBF2C2BEC6EE16FB4F8B576DE15CDAB51" : "NewsServer\/",
-    "615FD99B652E80AC2E813EEEE7964BA10A9886D5" : "Project\/NewsServer\/Packages\/PerfectThread-2.0.2\/",
-    "6F1260245BD69EFA9A05D126763C86280510C6E1" : "Project\/NewsServer\/Packages\/PerfectNet-2.0.2\/"
+    "C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53" : "NewsServer\/Packages\/CryptoSwift-0.6.6\/",
+    "6F1260245BD69EFA9A05D126763C86280510C6E1" : "NewsServer\/Packages\/PerfectNet-2.0.3\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "NewsServer",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -36,7 +38,7 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0B9B07A57A7603A158703662ACDD6F3ABAA339F4"
     },
     {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/hefeijinbo\/NewsServer.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/PerfectlySoft\/PerfectTemplate.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1CA88B7CBF2C2BEC6EE16FB4F8B576DE15CDAB51"
     },
@@ -59,6 +61,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/PerfectlySoft\/Perfect-MySQL.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B123C9ACF68A2BF01173B652DA8ABD73F990D1DE"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/krzyzanowskim\/CryptoSwift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C3D8ED1CB28D809ADCE2C0DE74935E8A502ACD53"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/PerfectlySoft\/Perfect-HTTPServer.git",
