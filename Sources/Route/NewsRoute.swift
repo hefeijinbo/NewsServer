@@ -25,7 +25,7 @@ extension Routes {
                     
                     if upload.fieldName == "images" && upload.isValidImage {
                         if let file = upload.file {
-                            let name = NSUUID().uuidString
+                            let name = NSUUID().uuidString + ".png"
                             if let _ = try? file.moveTo(path: localResPath + name, overWrite: true) {
                                 images += "\(serverResPath + name),"
                             }
@@ -34,7 +34,7 @@ extension Routes {
                     
                     if upload.fieldName == "sourceImage" && upload.isValidImage {
                         if let file = upload.file {
-                            let name = NSUUID().uuidString
+                            let name = NSUUID().uuidString + ".png"
                             if let _ = try? file.moveTo(path: localResPath + name, overWrite: true) {
                                 sourceImage = serverResPath + name
                             }
@@ -43,7 +43,7 @@ extension Routes {
                     
                     if upload.fieldName == "video" && upload.isValidVideo {
                         if let file = upload.file {
-                            let name = NSUUID().uuidString
+                            let name = NSUUID().uuidString + ".mp4"
                             if let _ = try? file.moveTo(path: localResPath + name, overWrite: true) {
                                 video = serverResPath + name
                             }
