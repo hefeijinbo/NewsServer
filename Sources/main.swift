@@ -26,6 +26,8 @@ routes.getNewsList()
 routes.login()
 routes.register()
 routes.resource()
+routes.addComment()
+routes.getComments()
 
 server.setResponseFilters([(ResponseFilter(), .medium)])
 server.addRoutes(routes)

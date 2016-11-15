@@ -11,6 +11,28 @@ import PerfectHTTP
 
 extension Routes {
     
+    mutating func addComment() {
+        add(uri: "/addComment") { (request, response) in
+            let content = request.param(name: "content") ?? ""
+            let nickname = request.param(name: "nickname") ?? ""
+            let icon = request.param(name: "icon") ?? ""
+            let newsID = request.param(name: "newsID") ?? ""
+            try? response.setBody(json: DB.addComment(content: content, nickname: nickname, icon: icon, newsID: newsID))
+            response.completed()
+        }
+    }
+    
+    mutating func getComments() {
+        add(uri: "/getComments") { (request, response) in
+            let minTime = Int(request.param(name: "minTime") ?? "")
+            let maxTime = Int(request.param(name: "maxTime") ?? "")
+            let newsID = request.param(name: "newsID") ?? "0"
+            let count = Int(request.param(name: "count") ?? "") ?? 10
+            try? response.setBody(json: DB.getComments(minTime: minTime, maxTime: maxTime, newsID: newsID, count: count))
+            response.completed()
+        }
+    }
+    
     mutating func addNews() {
         add(uri: "/addNews") { (request, response) in
             let title = request.param(name: "title") ?? ""
@@ -71,9 +93,9 @@ extension Routes {
             let maxTime = Int(request.param(name: "maxTime") ?? "")
             let count = Int(request.param(name: "count") ?? "") ?? 10
             let catagory = request.param(name: "catagory")
-            response.setHeader(.contentType, value: "application/json")
             try? response.setBody(json: DB.getNewsJSON(minTime: minTime, maxTime: maxTime,catagory: catagory, count: count))
             response.completed()
         }
     }
+
 }
