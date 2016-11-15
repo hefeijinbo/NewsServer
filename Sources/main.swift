@@ -28,6 +28,7 @@ routes.register()
 routes.resource()
 routes.addComment()
 routes.getComments()
+routes.getCommentCount()
 
 server.setResponseFilters([(ResponseFilter(), .medium)])
 server.addRoutes(routes)

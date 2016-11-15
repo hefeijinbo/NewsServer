@@ -11,9 +11,35 @@ import Foundation
 //新闻
 extension DB {
     
+    static func getCommentCount(newsID: String) -> [String : Any]{
+        if newsID.isEmpty {
+            return ResultDic(error: "参数错误")
+        }
+        let SQL = "select (commentCount) from News where ID = '\(newsID)'"
+        if let result = executeQuery(SQL: SQL){
+            if result.numRows() == 0 {
+                return ResultDic(error: "无此数据")
+            } else {
+                var count = "0"
+                result.forEachRow(callback: { (element) in
+                    count = element[0] ?? "0"
+                })
+                return ResultDic(data: ["count": count])
+            }
+        } else {
+            return ResultDic(error: "查询错误")
+        }
+    }
+    
     static func addComment(content: String, nickname: String, icon: String, newsID: String) -> [String: Any] {
         let SQL = "insert into Comment(content,nickname,icon,newsID) values('\(content)','\(nickname)','\(icon)','\(newsID)')"
         if let ID = executeInsert(SQL: SQL) {
+            DispatchQueue.addCommentCountQueue.async {
+                let rows = executeUpdate(SQL: "update News set commentCount=commentCount+1 where ID='\(newsID)'")
+                if let _ = rows {
+                    print("评论加1")
+                }
+            }
             return ResultDic(data: ["ID": ID,"content": content,"nickname":nickname,"icon": icon, "newsID": newsID,"updateTime": NSDate().timeIntervalSince1970])
         } else {
             return ResultDic(error: "评论失败")
