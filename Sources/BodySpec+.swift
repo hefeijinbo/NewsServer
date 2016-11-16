@@ -10,10 +10,10 @@ import PerfectHTTP
 
 extension MimeReader.BodySpec {
     var isValidImage: Bool {
-        return contentType.hasPrefix("image/") && fileSize < 4196352
+        return contentType.hasPrefix("image/")
     }
     
     var isValidVideo: Bool {
-        return contentType.hasPrefix("video/") && fileSize < 4196352
+        return contentType.hasPrefix("video/")
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5CD7425F1DDADDF200D272B1 /* DispatchQueue+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD7425E1DDADDF200D272B1 /* DispatchQueue+.swift */; };
+		5CD742631DDBD4E200D272B1 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD742621DDBD4E200D272B1 /* Utils.swift */; };
 		OBJ_1000 /* comp_err.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_170 /* comp_err.c */; };
 		OBJ_1001 /* comp_lib.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_171 /* comp_lib.c */; };
 		OBJ_1002 /* conf_api.c in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_172 /* conf_api.c */; };
@@ -1011,6 +1012,7 @@
 
 /* Begin PBXFileReference section */
 		5CD7425E1DDADDF200D272B1 /* DispatchQueue+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+.swift"; sourceTree = "<group>"; };
+		5CD742621DDBD4E200D272B1 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		OBJ_10 /* Dir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dir.swift; sourceTree = "<group>"; };
 		OBJ_100 /* bn_mul.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = bn_mul.c; sourceTree = "<group>"; };
 		OBJ_101 /* bn_nist.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = bn_nist.c; sourceTree = "<group>"; };
@@ -1945,6 +1947,7 @@
 				OBJ_811 /* ResponseFilter.swift */,
 				OBJ_812 /* String+.swift */,
 				5CD7425E1DDADDF200D272B1 /* DispatchQueue+.swift */,
+				5CD742621DDBD4E200D272B1 /* Utils.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -3295,6 +3298,7 @@
 				OBJ_1699 /* arguments.swift in Sources */,
 				OBJ_1700 /* BodySpec+.swift in Sources */,
 				OBJ_1701 /* DateFormatter+.swift in Sources */,
+				5CD742631DDBD4E200D272B1 /* Utils.swift in Sources */,
 				OBJ_1702 /* DB.swift in Sources */,
 				OBJ_1703 /* main.swift in Sources */,
 				OBJ_1704 /* NewsDB.swift in Sources */,

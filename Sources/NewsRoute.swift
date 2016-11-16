@@ -86,6 +86,11 @@ extension Routes {
                 images.remove(at: images.index(before: images.endIndex))
             }
             
+            //获取视频缩略图作为image
+            if images.isEmpty, !video.isEmpty {
+                images = Utils.getThumbnail(videoURL: video)
+            }
+            
             if let ID = DB.addNews(title: title, detail: detail, images: images, source: source, sourceImage: sourceImage, video: video, catagory: catagory) {
                 response.setBody(string: "添加成功,新闻ID为\(ID)")
             } else {
