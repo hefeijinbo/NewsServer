@@ -81,8 +81,8 @@ extension DB {
     }
 
     
-    static func addNews(title: String, detail: String, images: String,source: String,sourceImage: String, video: String,catagory: String) -> UInt? {
-        let SQL = "insert into News(title,detail,images,source,sourceImage,video,catagory) values('\(title)','\(detail)','\(images)','\(source)','\(sourceImage)','\(video)','\(catagory)')"
+    static func addNews(title: String, detail: String, images: String,source: String,sourceImage: String, video: String,duration: TimeInterval,catagory: String) -> UInt? {
+        let SQL = "insert into News(title,detail,images,source,sourceImage,video,duration,catagory) values('\(title)','\(detail)','\(images)','\(source)','\(sourceImage)','\(video)','\(duration)','\(catagory)')"
         return executeInsert(SQL: SQL)
     }
     
@@ -124,6 +124,7 @@ extension DB {
                 newsDic["catagory"] = element[7]
                 newsDic["commentCount"] = element[8]
                 newsDic["detail"] = element[9]
+                newsDic["duration"] = element[10]
                 array.append(newsDic)
             })
         }

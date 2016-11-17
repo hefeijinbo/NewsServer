@@ -50,6 +50,7 @@ extension Routes {
             var images = ""
             var sourceImage = ""
             var video = ""
+            var duration = 0.0 //视频时长
             if let uploads = request.postFileUploads {
                 for upload in uploads {
                     
@@ -87,11 +88,17 @@ extension Routes {
             }
             
             //获取视频缩略图作为image
-            if images.isEmpty, !video.isEmpty {
-                images = Utils.getThumbnail(videoURL: video)
+            if !video.isEmpty {
+                if images.isEmpty {
+                    let tuple = Utils.getThumbnailAndDuration(videoURL: video)
+                    images = tuple.0
+                    duration = tuple.1
+                } else {
+                    duration = Utils.getDuration(videoURL: video)
+                }
             }
             
-            if let ID = DB.addNews(title: title, detail: detail, images: images, source: source, sourceImage: sourceImage, video: video, catagory: catagory) {
+            if let ID = DB.addNews(title: title, detail: detail, images: images, source: source, sourceImage: sourceImage, video: video,duration: duration,catagory: catagory) {
                 response.setBody(string: "添加成功,新闻ID为\(ID)")
             } else {
                 response.setBody(string: "添加失败")
