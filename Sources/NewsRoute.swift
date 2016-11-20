@@ -11,6 +11,22 @@ import PerfectHTTP
 
 extension Routes {
     
+    mutating func getTitles() {
+        add(uri: "/getTitles") { (request, response) in
+            let key = request.param(name: "key") ?? ""
+            try? response.setBody(json: DB.getTitles(key: key))
+            response.completed()
+        }
+    }
+    
+    mutating func getNews() {
+        add(uri: "/getNews") { (request, response) in
+            let ID = request.param(name: "ID") ?? ""
+            try? response.setBody(json: DB.getNews(ID: ID))
+            response.completed()
+        }
+    }
+    
     mutating func getCommentCount() {
         add(uri: "/getCommentCount") { (request, response) in
             let newsID = request.param(name: "newsID") ?? ""

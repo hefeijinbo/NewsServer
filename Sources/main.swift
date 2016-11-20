@@ -29,6 +29,8 @@ routes.resource()
 routes.addComment()
 routes.getComments()
 routes.getCommentCount()
+routes.getTitles()
+routes.getNews()
 
 server.setResponseFilters([(ResponseFilter(), .medium)])
 server.addRoutes(routes)

@@ -11,6 +11,55 @@ import Foundation
 //新闻
 extension DB {
     
+    static func getTitles(key: String) -> [String:Any]{
+        if key.isEmpty {
+            return ResultDic(error: "参数错误")
+        }
+        let SQL = "select ID,title from News where title like '%\(key)%'"
+        if let result = executeQuery(SQL: SQL) {
+            var array = [[String:Any]]()
+            result.forEachRow(callback: { (element) in
+                var newsDic = [String:Any]()
+                newsDic["ID"] = element[0]
+                newsDic["title"] = element[1]
+                array.append(newsDic)
+            })
+            return ResultDic(data: array)
+        } else {
+            return ResultDic(error: "请求错误")
+        }
+    }
+    
+    static func getNews(ID: String) -> [String:Any] {
+        if ID.isEmpty {
+            return ResultDic(error: "参数错误")
+        }
+        let SQL = "select * from News where ID = '\(ID)'"
+        if let result = executeQuery(SQL: SQL) {
+            var newsDic = [String: Any]()
+            result.forEachRow(callback: { (element) in
+                newsDic["ID"] = element[0]
+                newsDic["title"] = element[1]
+                if let images = element[2], !images.isEmpty {
+                    newsDic["images"] = images.components(separatedBy: ",")
+                } else {
+                    newsDic["images"] = [String]()
+                }
+                newsDic["source"] = element[3]
+                newsDic["sourceImage"] = element[4]
+                newsDic["updateTime"] = DateFormatter.shared.date(from: element[5] ?? "")?.timeIntervalSince1970 ?? 0
+                newsDic["video"] = element[6]
+                newsDic["catagory"] = element[7]
+                newsDic["commentCount"] = element[8]
+                newsDic["detail"] = element[9]
+                newsDic["duration"] = element[10]
+            })
+            return ResultDic(data: newsDic)
+        } else {
+            return ResultDic(error: "请求错误")
+        }
+    }
+    
     static func getCommentCount(newsID: String) -> [String : Any]{
         if newsID.isEmpty {
             return ResultDic(error: "参数错误")
