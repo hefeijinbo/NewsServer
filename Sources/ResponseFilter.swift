@@ -11,7 +11,12 @@ import PerfectHTTP
 class ResponseFilter: HTTPResponseFilter {
     
     func filterHeaders(response: HTTPResponse, callback: (HTTPResponseFilterResult) -> ()) {
-        response.setHeader(.contentType, value: "text/json;charset=utf-8")
+        //解决网页中文乱码问题
+        if let contentType = response.header(.contentType) {
+            response.setHeader(.contentType, value: "\(contentType);charset=utf-8")
+        } else {
+            response.setHeader(.contentType, value: "text/json;charset=utf-8")
+        }
         callback(.continue)
     }
     

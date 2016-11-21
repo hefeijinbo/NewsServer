@@ -1,5 +1,5 @@
 //
-//  NewsDB.swift
+//  VideoDB.swift
 //  NewsServer
 //
 //  Created by bo on 2016/11/9.
@@ -8,22 +8,21 @@
 
 import Foundation
 
-//新闻
+//视频
 extension DB {
-    
-    //使用关键字搜索新闻
-    static func getNewsTitles(key: String) -> [String:Any]{
+    //使用关键字搜索视频
+    static func getVideoTitles(key: String) -> [String:Any]{
         if key.isEmpty {
             return ResultDic(error: "参数错误")
         }
-        let SQL = "select ID,title from News where title like '%\(key)%'"
+        let SQL = "select ID,title from Video where title like '%\(key)%'"
         if let result = executeQuery(SQL: SQL) {
             var array = [[String:Any]]()
             result.forEachRow(callback: { (element) in
-                var dic = [String:Any]()
-                dic["ID"] = element[0]
-                dic["title"] = element[1]
-                array.append(dic)
+                var videoDic = [String:Any]()
+                videoDic["ID"] = element[0]
+                videoDic["title"] = element[1]
+                array.append(videoDic)
             })
             return ResultDic(data: array)
         } else {
@@ -31,33 +30,26 @@ extension DB {
         }
     }
     
-    //使用ID查找新闻
-    static func getNews(ID: String) -> [String:Any] {
+    //使用ID获取视频
+    static func getVideo(ID: String) -> [String:Any] {
         if ID.isEmpty {
             return ResultDic(error: "参数错误")
         }
-        let SQL = "select * from News where ID = '\(ID)'"
+        let SQL = "select * from Video where ID = '\(ID)'"
         if let result = executeQuery(SQL: SQL) {
             var dic = [String: Any]()
             result.forEachRow(callback: { (element) in
                 dic["ID"] = element[0]
                 dic["title"] = element[1]
-                dic["detail"] = element[2]
-                dic["catagory"] = element[3]
-                if let images = element[4], !images.isEmpty {
-                    dic["images"] = images.components(separatedBy: ",")
-                        .map({ (image) -> String in
-                        return serverImagesPath + image
-                    })
-                } else {
-                    dic["images"] = [String]()
-                }
-                dic["source"] = element[5]
-                if let sourceImage = element[6] {
-                    dic["sourceImage"] = serverImagesPath + sourceImage
-                }
-                dic["updateTime"] = DateFormatter.shared.date(from: element[7] ?? "")?.timeIntervalSince1970 ?? 0
+                dic["catagory"] = element[2]
+                dic["image"] = element[3]
+                dic["source"] = element[4]
+                dic["sourceImage"] = element[5]
+                dic["updateTime"] = DateFormatter.shared.date(from: element[6] ?? "")?.timeIntervalSince1970 ?? 0
+                dic["url"] = element[7]
                 dic["commentCount"] = element[8]
+                dic["duration"] = element[9]
+                dic["playCount"] = element[10]
             })
             return ResultDic(data: dic)
         } else {
@@ -65,12 +57,11 @@ extension DB {
         }
     }
     
-    //获取新闻评论数量
-    static func getNewsCommentCount(ID: String) -> [String : Any]{
+    static func getVideoCommentCount(ID: String) -> [String : Any]{
         if ID.isEmpty {
             return ResultDic(error: "参数错误")
         }
-        let SQL = "select (commentCount) from News where ID = '\(ID)'"
+        let SQL = "select (commentCount) from Video where ID = '\(ID)'"
         if let result = executeQuery(SQL: SQL){
             if result.numRows() == 0 {
                 return ResultDic(error: "无此数据")
@@ -86,14 +77,13 @@ extension DB {
         }
     }
     
-    //新增新闻
-    static func addNews(title: String, detail: String,catagory: String, images: String,source: String,sourceImage: String) -> UInt? {
-        let SQL = "insert into News(title,detail,catagory,images,source,sourceImage) values('\(title)','\(detail)','\(catagory)','\(images)','\(source)','\(sourceImage)')"
+    static func addVideo(title: String,catagory: String,image: String,source: String,sourceImage: String, url: String,duration: TimeInterval) -> UInt? {
+        let SQL = "insert into Video(title,catagory,image,source,sourceImage,url,duration) values('\(title)','\(catagory)','\(image)','\(source)','\(sourceImage)','\(url)','\(duration)')"
         return executeInsert(SQL: SQL)
     }
     
-    static func getNewsList(minTime: Int?, maxTime: Int?, catagory: String?, count: Int) -> [String:Any] {
-        var SQL = "select * from News "
+    static func getVideos(minTime: Int?, maxTime: Int?, catagory: String?, count: Int) -> [String:Any] {
+        var SQL = "select * from Video "
         var hasWhere = true
         if let minTime = minTime,let maxTime = maxTime {
             SQL += "where updateTime > from_unixtime(\(minTime)) and updateTime < from_unixtime(\(maxTime))"
@@ -118,22 +108,15 @@ extension DB {
                 var dic = [String:Any]()
                 dic["ID"] = element[0]
                 dic["title"] = element[1]
-                dic["detail"] = element[2]
-                dic["catagory"] = element[3]
-                if let images = element[4], !images.isEmpty {
-                    dic["images"] = images.components(separatedBy: ",")
-                        .map({ (image) -> String in
-                        return serverImagesPath + image
-                    })
-                } else {
-                    dic["images"] = [String]()
-                }
-                dic["source"] = element[5]
-                if let sourceImage = element[6] {
-                    dic["sourceImage"] = serverImagesPath + sourceImage
-                }
-                dic["updateTime"] = DateFormatter.shared.date(from: element[7] ?? "")?.timeIntervalSince1970 ?? 0
+                dic["catagory"] = element[2]
+                dic["image"] = element[3]
+                dic["source"] = element[4]
+                dic["sourceImage"] = element[5]
+                dic["updateTime"] = DateFormatter.shared.date(from: element[6] ?? "")?.timeIntervalSince1970 ?? 0
+                dic["url"] = element[7]
                 dic["commentCount"] = element[8]
+                dic["duration"] = element[9]
+                dic["playCount"] = element[10]
                 array.append(dic)
             })
         }

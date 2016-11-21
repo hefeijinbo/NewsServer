@@ -9,7 +9,7 @@
 import Foundation
 
 extension DateFormatter {
-    public static var shared: DateFormatter {
+    static var shared: DateFormatter{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
         return dateFormatter

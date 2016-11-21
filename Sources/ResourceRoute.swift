@@ -11,9 +11,16 @@ import PerfectHTTP
 
 extension Routes {
     
-    //上传的图片和视频
-    mutating func resource() {
-        add(uri: "/resources/*") { (request, response) in
+    //上传的图片
+    mutating func images() {
+        add(uri: "/images/*") { (request, response) in
+            StaticFileHandler(documentRoot: "/Users/jinbo/News/").handleRequest(request: request, response: response)
+        }
+    }
+    
+    //上传的视频
+    mutating func videos() {
+        add(uri: "/videos/*") { (request, response) in
             StaticFileHandler(documentRoot: "/Users/jinbo/News/").handleRequest(request: request, response: response)
         }
     }

@@ -15,13 +15,7 @@ extension Routes {
         add(uri: "/register") { (request, response) in
             let username = request.param(name: "username") ?? ""
             let password = request.param(name: "password") ?? ""
-            if username.isEmpty {
-                try? response.setBody(json: ["error": "请输入用户名"])
-            } else if password.isEmpty {
-                try? response.setBody(json: ["error": "请输入用户名"])
-            } else {
-                try? response.setBody(json: DB.register(username: username, password: password))
-            }
+            try? response.setBody(json: DB.register(username: username, password: password))
             response.completed()
         }
     }
@@ -30,13 +24,8 @@ extension Routes {
         add(uri: "/login") { (request, response) in
             let username = request.param(name: "username") ?? ""
             let password = request.param(name: "password") ?? ""
-            if username.isEmpty {
-                try? response.setBody(json: ["error": "请输入用户名"])
-            } else if password.isEmpty {
-                try? response.setBody(json: ["error": "请输入用户名"])
-            } else {
-                
-            }
+            try? response.setBody(json: DB.login(username: username, password: password))
+            response.completed()
         }
     }
 }

@@ -5,23 +5,20 @@
 //  Created by jinbo on 16/10/18.
 //
 //
-import Foundation
 import MySQL
 
-class DB: NSObject {
+struct DB {
 
-    static let Host = "127.0.0.1"
+    static let Host = server.serverAddress
     static let User = "root"
     static let Password = "root"
-    static let DB = "News"
-    
-    static let defaultNickname = "路人甲"
-    static let defaultIcon = "http://\(server.serverAddress):\(server.serverPort)/" + "icon.png"
+    static let DBName = "News"
+    static let Port: UInt32 = 3306
     
     static func executeQuery(SQL: String) -> MySQL.Results? {
         print(SQL)
         let mysql = MySQL()
-        let connected = mysql.connect(host: Host, user: User, password: Password, db: DB, port: 3306)
+        let connected = mysql.connect(host: Host, user: User, password: Password, db: DBName, port: Port)
         guard connected else {
             print(mysql.errorMessage())
             return nil
@@ -39,7 +36,7 @@ class DB: NSObject {
     static func executeInsert(SQL: String) -> UInt? {
         print(SQL)
         let mysql = MySQL()
-        let connected = mysql.connect(host: Host, user: User, password: Password, db: DB, port: 3306)
+        let connected = mysql.connect(host: Host, user: User, password: Password, db: DBName, port: Port)
         guard connected else {
             print(mysql.errorMessage())
             return nil
@@ -61,7 +58,7 @@ class DB: NSObject {
     static func executeUpdate(SQL: String) -> UInt? {
         print(SQL)
         let mysql = MySQL()
-        let connected = mysql.connect(host: Host, user: User, password: Password, db: DB, port: 3306)
+        let connected = mysql.connect(host: Host, user: User, password: Password, db: DBName, port: Port)
         guard connected else {
             print(mysql.errorMessage())
             return nil
@@ -80,10 +77,12 @@ class DB: NSObject {
     }
     
     static func ResultDic(error: String) -> [String: Any]{
+        print(error)
         return ["error": error]
     }
     
     static func ResultDic(data: Any) -> [String: Any] {
+        print(data)
         return ["data": data]
     }
 }

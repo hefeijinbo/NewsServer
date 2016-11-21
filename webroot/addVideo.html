@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新闻编辑</title>
+</head>
+<body>
+
+<h2>新增新闻</h2>
+<form action="/addVideo" method="post" enctype="multipart/form-data">
+    <h5>标题</h5>
+    <input type="text" id="title" name="title">
+
+    <h5>分类</h5>
+    <input type="radio" name="catagory" value="热点" checked>热点
+    <input type="radio" name="catagory" value="搞笑">搞笑
+    <input type="radio" name="catagory" value="社会">社会
+    <input type="radio" name="catagory" value="音乐">音乐
+    <input type="radio" name="catagory" value="小品">小品
+    <input type="radio" name="catagory" value="生活">生活
+    <input type="radio" name="catagory" value="影视">影视
+    <input type="radio" name="catagory" value="娱乐">娱乐
+    <input type="radio" name="catagory" value="呆萌">呆萌
+    <input type="radio" name="catagory" value="游戏">游戏
+    <input type="radio" name="catagory" value="原创">原创
+    <br>
+
+    <h5>来源</h5>
+    <input type="text" id="source" name="source">
+
+    <h5>选择来源头像</h5>
+    <input type="file" id="sourceImage" name="sourceImage">
+
+    <h5>选择视频</h5>
+    <input type="file" id="video" name="video">
+    <br><br><br>
+
+    <input type="submit" value="提交">
+    <input type="reset">
+</form>
+
+</body>
+</html>
