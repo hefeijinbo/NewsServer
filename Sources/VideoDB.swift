@@ -42,11 +42,17 @@ extension DB {
                 dic["ID"] = element[0]
                 dic["title"] = element[1]
                 dic["catagory"] = element[2]
-                dic["image"] = element[3]
+                if let image = element[3] {
+                    dic["image"] = serverImagesPath + image
+                }
                 dic["source"] = element[4]
-                dic["sourceImage"] = element[5]
+                if let sourceImage = element[5] {
+                    dic["sourceImage"] = serverImagesPath + sourceImage
+                }
                 dic["updateTime"] = DateFormatter.shared.date(from: element[6] ?? "")?.timeIntervalSince1970 ?? 0
-                dic["url"] = element[7]
+                if let url = element[7] {
+                    dic["url"] = serverVideosPath + url
+                }
                 dic["commentCount"] = element[8]
                 dic["duration"] = element[9]
                 dic["playCount"] = element[10]
@@ -109,11 +115,17 @@ extension DB {
                 dic["ID"] = element[0]
                 dic["title"] = element[1]
                 dic["catagory"] = element[2]
-                dic["image"] = element[3]
+                if let image = element[3] {
+                    dic["image"] = serverImagesPath + image
+                }
                 dic["source"] = element[4]
-                dic["sourceImage"] = element[5]
+                if let sourceImage = element[5] {
+                    dic["sourceImage"] = serverImagesPath + sourceImage
+                }
                 dic["updateTime"] = DateFormatter.shared.date(from: element[6] ?? "")?.timeIntervalSince1970 ?? 0
-                dic["url"] = element[7]
+                if let url = element[7] {
+                    dic["url"] = serverVideosPath + url
+                }
                 dic["commentCount"] = element[8]
                 dic["duration"] = element[9]
                 dic["playCount"] = element[10]
