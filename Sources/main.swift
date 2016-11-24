@@ -25,6 +25,7 @@ var routes = Routes()
 //用户接口
 routes.login()
 routes.register()
+routes.updateUserIcon()
 
 //资源
 routes.images()

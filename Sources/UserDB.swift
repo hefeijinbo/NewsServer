@@ -42,7 +42,7 @@ extension DB {
         if password.isEmpty {
             return ResultDic(error: "请输入密码")
         }
-        let SQL = "select (username,nickname,icon,token) from User where username = '\(username) and password = '\(password)''"
+        let SQL = "select username,nickname,icon,token from User where username='\(username)' and password = '\(password)'"
         if let result = executeQuery(SQL: SQL) {
             if result.numRows() > 0 {
                 var dic = [String: Any]()
@@ -69,7 +69,7 @@ extension DB {
     }
     
     static func getUserInfo(username: String) -> [String: Any]{
-        let SQL = "select (username,nickname,icon) from User where username = '\(username)'"
+        let SQL = "select username,nickname,icon from User where username = '\(username)'"
         if let result = executeQuery(SQL: SQL) {
             if result.numRows() > 0 {
                 var dic = [String: Any]()
@@ -100,12 +100,12 @@ extension DB {
     }
     
     static func updateUserIcon(username: String, token: String, icon: String) -> [String: Any]{
-        let SQL = "update News set icon = '\(icon)' where username = '\(username)' and token = '\(token)'"
+        let SQL = "update User set icon = '\(icon)' where username = '\(username)' and token = '\(token)'"
         if let affectedRows = executeUpdate(SQL: SQL) {
             if affectedRows == 0 {
                 return ResultDic(error: "参数错误")
             } else {
-                return ResultDic(data: ["icon": icon])
+                return ResultDic(data: ["icon": serverImagesPath + icon])
             }
         } else {
             return ResultDic(error: "修改失败")
