@@ -15,8 +15,10 @@ server.serverPort = 8181
 server.documentRoot = "./webroot"
 
 //配置路径
-let serverImagesPath = "http://\(server.serverAddress):\(server.serverPort)/" + "images/"
-let serverVideosPath = "http://\(server.serverAddress):\(server.serverPort)/" + "videos/"
+//let IP = server.serverAddress
+let IP = "10.8.7.138"
+let serverImagesPath = "http://\(IP):\(server.serverPort)/" + "images/"
+let serverVideosPath = "http://\(IP):\(server.serverPort)/" + "videos/"
 let localImagesPath = "/Users/jinbo/News/images/"
 let localVideosPath = "/Users/jinbo/News/videos/"
 
